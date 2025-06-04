@@ -1,0 +1,133 @@
+{
+  "info": {
+    "name": "Emotion Assistant API",
+    "_postman_id": "example-id-1234",
+    "description": "Collection to test Emotion Assistant API endpoints on Firebase",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Upload Recording Metadata",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer <YOUR_FIREBASE_ID_TOKEN>",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"userId\": \"abc123\",\n  \"audioUrl\": \"https://firebasestorage.googleapis.com/...\",\n  \"reason\": \"\u10e1\u10e2\u10e0\u10d4\u10e1\u10d8\",\n  \"timestamp\": \"2025-06-04T15:30:00Z\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://<YOUR_CLOUD_FUNCTION_URL>/recordings",
+          "host": [
+            "https://<YOUR_CLOUD_FUNCTION_URL>"
+          ],
+          "path": [
+            "recordings"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Recordings",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer <YOUR_FIREBASE_ID_TOKEN>",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://<YOUR_CLOUD_FUNCTION_URL>/recordings?userId=abc123",
+          "host": [
+            "https://<YOUR_CLOUD_FUNCTION_URL>"
+          ],
+          "path": [
+            "recordings"
+          ],
+          "query": [
+            {
+              "key": "userId",
+              "value": "abc123"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Analyze Recording",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer <YOUR_FIREBASE_ID_TOKEN>",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"recordingId\": \"rec_001\",\n  \"audioUrl\": \"https://firebasestorage.googleapis.com/...\" \n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://<YOUR_CLOUD_FUNCTION_URL>/analyze",
+          "host": [
+            "https://<YOUR_CLOUD_FUNCTION_URL>"
+          ],
+          "path": [
+            "analyze"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Mark as Favorite",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer <YOUR_FIREBASE_ID_TOKEN>",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"favorite\": true\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://<YOUR_CLOUD_FUNCTION_URL>/recordings/rec_001/favorite",
+          "host": [
+            "https://<YOUR_CLOUD_FUNCTION_URL>"
+          ],
+          "path": [
+            "recordings",
+            "rec_001",
+            "favorite"
+          ]
+        }
+      }
+    }
+  ]
+}

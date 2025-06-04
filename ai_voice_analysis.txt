@@ -1,0 +1,6 @@
+
+# Voice-to-Text Analysis AI - Cloud Function Setup
+
+1. Transcribe audio using Google Cloud Speech-to-Text.
+2. Run sentiment analysis using a pre-trained model (like DistilBERT).
+3. Store sentiment score in Firestore.
